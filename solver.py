@@ -22,13 +22,15 @@ def print_sudoku(board):
             print("|" + "   +"*8 + "   |")
 
 
-def contain_row(number,y):
+def exist_in_col(number,y):
     if number in board[y]:
         return True
     return False
 
-
+def exist_in_row(number,x):
+    for col in range (0, 9):
+        if number == board[col][x]:
+            return True
+    return False
 
 print_sudoku(board)
-
-contain_row(1,0)
