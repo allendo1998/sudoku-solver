@@ -22,15 +22,18 @@ def print_sudoku(board):
             print("|" + "   +"*8 + "   |")
 
 
-def exist_in_col(number,y):
-    if number in board[y]:
+def exist_in_col(number,x):
+    if number in board[x]:
         return True
     return False
 
-def exist_in_row(number,x):
+def exist_in_row(number,y):
     for col in range (0, 9):
-        if number == board[col][x]:
+        if number == board[col][y]:
             return True
     return False
+
+# def exist_in_quaderant(number, x, y):
+
 
 print_sudoku(board)
