@@ -21,4 +21,14 @@ def print_sudoku(board):
         else:
             print("|" + "   +"*8 + "   |")
 
+
+def contain_row(number,y):
+    if number in board[y]:
+        return True
+    return False
+
+
+
 print_sudoku(board)
+
+contain_row(1,0)
