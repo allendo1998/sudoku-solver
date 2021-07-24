@@ -22,18 +22,64 @@ def print_sudoku(board):
             print("|" + "   +"*8 + "   |")
 
 
-def exist_in_col(number,x):
-    if number in board[x]:
+def exist_in_row(number,row):
+    if number in board[row]:
         return True
     return False
 
-def exist_in_row(number,y):
+def exist_in_col(number,y):
     for col in range (0, 9):
         if number == board[col][y]:
             return True
     return False
 
-# def exist_in_quaderant(number, x, y):
-
+def exist_in_quaderant(number, x, y, board):
+    if x >= 0 and x <= 2 and y >= 0 and y <= 2:
+        for row in range (0,3):
+            for col in range (0,3):
+                if number == board[row][col]:
+                    return True
+    elif x >= 3 and x <= 5 and y >= 0 and y <= 2:
+        for row in range (0,3):
+            for col in range(3,6):
+                if number == board[row][col]:
+                    return True
+    elif x >= 6 and x <= 8 and y >= 0 and y <= 2:
+        for row in range (0,3):
+            for col in range(6,9):
+                if number == board[row][col]:
+                    return True
+    elif x >= 0 and x <= 2 and y >= 3 and y <= 5:
+        for row in range (3,6):
+            for col in range(0,3):
+                if number == board[row][col]:
+                    return True
+    elif x >= 3 and x <= 5 and y >= 3 and y <= 5:
+        for row in range (3,6):
+            for col in range(3,6):
+                if number == board[row][col]:
+                    return True
+    elif x >= 6 and x <= 8 and y >= 3 and y <= 5:
+        for row in range (3,6):
+            for col in range(6,9):
+                if number == board[row][col]:
+                    return True
+    elif x >= 0 and x <= 2 and y >= 6 and y <= 8:
+        for row in range (6,9):
+            for col in range(0,3):
+                if number == board[row][col]:
+                    return True
+    elif x >= 3 and x <= 5 and y >= 6 and y <= 8:
+        for row in range (6,9):
+            for col in range(3,6):
+                if number == board[row][col]:
+                    return True
+    elif x >= 6 and x <= 8 and y >= 6 and y <= 8:
+        for row in range (6,9):
+            for col in range(6,9):
+                if number == board[row][col]:
+                    return True
+    return False
+    
 
 print_sudoku(board)
