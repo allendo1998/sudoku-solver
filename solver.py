@@ -1,3 +1,6 @@
+import os
+
+
 board = [
     [9, 0, 0, 6, 8, 7, 0, 4, 0],
     [0, 2, 0, 0, 0, 3, 0, 6, 0],
@@ -9,6 +12,8 @@ board = [
     [0, 5, 6, 0, 0, 1, 4, 7, 3],
     [0, 4, 0, 7, 2, 0, 0, 0, 1],
 ]
+
+solution_list = []
 
 def print_sudoku(board):
     print("-"*37)
@@ -80,6 +85,24 @@ def exist_in_quaderant(number, x, y, board):
                 if number == board[row][col]:
                     return True
     return False
-    
+
+def fill_empty(board):
+    for row in range(0,9):
+        for col in range(0,9):
+            if board[row][col] == 0:
+                solution_list.append((row,col))
+
+def solve_sudoku(board):
+    index = 0
+    while True:
+        os.system('clear')
+        print_sudoku(board)
+        index += 1
+        if index == 10:
+            break
+
+# solve_sudoku(board)
 
 print_sudoku(board)
+
+fill_empty(board)
