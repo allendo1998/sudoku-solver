@@ -1,4 +1,7 @@
 import os
+import time
+
+start = 0
 
 board = [
     [0, 0, 0, 2, 0, 0, 0, 1, 3],
@@ -108,13 +111,15 @@ def backtrack(index, board):
 
 def solve_sudoku(board):
     index = 0
-
+    start = time.time()
     while True:
         for number in range(1,10):
             if exist_in_row(number, solution_list[index][0]) == False and exist_in_col(number, solution_list[index][1]) == False and exist_in_quaderant(number, solution_list[index][1], solution_list[index][0], board) == False:
                 board[solution_list[index][0]][solution_list[index][1]] = number
                 os.system('clear')
-                print_sudoku(board) 
+                print_sudoku(board)
+                end = time.time()
+                print("[Time Elapsed : %3.2f]" % (end - start))
                 index += 1 
                 break
             if number == 9:
