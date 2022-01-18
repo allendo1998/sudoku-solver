@@ -44,7 +44,9 @@ def clear_board():
             board[row][col] = 0
     grid_layout(root,9)
 
-def get_new_board(list):
+
+# Put entries onto a board to solve
+def board_to_entities(list):
     row = 0
     col = 0
     for value in list:
@@ -57,9 +59,17 @@ def get_new_board(list):
     return board
         
 
+
+
+
+# Main
 root = tk.Tk()
 root.title('Sudoku Solver')
 grid_layout(root, 9)
+
+# Solve Board
+s = tk.Button(root, text = "Solve", comman = None)
+s.grid(row = 0, column = 16)
 
 # Clear Board
 C = tk.Button(root, text = "Clear", comman = clear_board)
