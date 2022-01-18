@@ -15,29 +15,14 @@ board = [
     [0, 3, 0, 0, 0, 0, 2, 0, 0],
 ]
 
-def print_sudoku(board):
-    print("-"*37)
-    for i, row in enumerate(board):
-        print(("|" + " {}   {}   {} |"*3).format(*[x if x != 0 else " " for x in row]))
-        if i == 8:
-            print("-"*37)
-        elif i % 3 == 2:
-            print("|" + "---+"*8 + "---|")
-        else:
-            print("|" + "   +"*8 + "   |")
-
-
-def grid_layout(root, grid_dim, func):
+def grid_layout(root, grid_dim):
     
     for row in range(grid_dim):
         for col in range(grid_dim):
         
             entry = tk.Entry(root, width=2, highlightthickness=5, highlightbackground='#000000', justify="center")
-            if(func == "clear"):
-                entry.insert(-1," ")
-            else:
-                if(board[row][col] != 0):
-                    entry.insert(-1,board[row][col])
+            if(board[row][col] != 0):
+                entry.insert(-1,board[row][col])
             pad_y = (0, 0)
             pad_x = (0, 0)
             
@@ -54,20 +39,30 @@ def get_entries():
     return entries
 
 def clear_board():
-    grid_layout(root,9,"clear")
+    for row in range(9):
+        for col in range(9):
+            board[row][col] = 0
+    grid_layout(root,9)
 
+def get_new_board(list):
+    row = 0
+    col = 0
+    for value in list:
+        board[row][col] = value
+        col = col + 1
+
+        if((list.index(value) + 1) % 9 == 0):
+            row = row + 1
+            col = 0
+    return board
+        
 
 root = tk.Tk()
 root.title('Sudoku Solver')
-grid_layout(root, 9, "None")
-
-# Button To Solve
-# B = tk.Button(root, text ="Solve", command = clear_board)
-# B.grid(row = 13, column = 4)
+grid_layout(root, 9)
 
 # Clear Board
 C = tk.Button(root, text = "Clear", comman = clear_board)
-C.grid(row = 0, column = 16)
-
+C.grid(row = 3, column = 16)
 
 root.mainloop()
