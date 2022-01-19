@@ -126,6 +126,7 @@ def backtrack(index, board):
 def solve_sudoku(board):
     index = 0
     start = time.time()
+    
     while True:
         for number in range(1,10):
             if exist_in_row(number, solution_list[index][0]) == False and exist_in_col(number, solution_list[index][1]) == False and exist_in_quaderant(number, solution_list[index][1], solution_list[index][0], board) == False:
@@ -142,11 +143,11 @@ def solve_sudoku(board):
         if index == len(solution_list):
             break
 
-fill_empty(board)
 
 def main(board):
     print_sudoku(board)
     input("Press enter to solve: ")
+    fill_empty(board)
     solve_sudoku(board)
         
 main(board)
