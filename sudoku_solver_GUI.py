@@ -2,7 +2,8 @@ import enum
 from html import entities
 from multiprocessing.sharedctypes import Value
 import tkinter as tk
-
+import os
+import time
 
 # --- Global Variables ---
 
@@ -183,6 +184,7 @@ def solve():
             if exist_in_row(number, solution_list[index][0]) == False and exist_in_col(number, solution_list[index][1]) == False and exist_in_quaderant(number, solution_list[index][1], solution_list[index][0], board) == False:
                 board[solution_list[index][0]][solution_list[index][1]] = number
                 insert_board_to_grid()
+                print_sudoku(board)
                 index += 1 
                 break
             if number == 9:
@@ -191,8 +193,6 @@ def solve():
         if index == len(solution_list):
             break
   
-
-
 # --- Main ---
 root = tk.Tk()
 root.title('Sudoku Solver')
@@ -200,8 +200,8 @@ grid_layout(root, 9)
 insert_board_to_grid()
 
 # Solve Board
-s = tk.Button(root, text = "Solve", comman = solve)
-s.grid(row = 0, column = 16)
+S = tk.Button(root, text = "Solve", comman = solve)
+S.grid(row = 0, column = 16)
 
 # Clear Board
 C = tk.Button(root, text = "Clear", comman = clear_board)
